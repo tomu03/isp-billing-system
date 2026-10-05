@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  @apply bg-paper text-ink-900 antialiased;
+  font-feature-settings: 'ss01' 1;
+}
+
+.mono {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: #D3D8D0; border-radius: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+.status-dot { display: inline-block; width: 6px; height: 6px; border-radius: 999px; }
+
+table.data-table th {
+  @apply text-left text-[11px] uppercase tracking-wide text-ink-600 font-semibold py-2.5 px-3 border-b border-line;
+}
+table.data-table td {
+  @apply text-sm py-2.5 px-3 border-b border-line/70;
+}
+table.data-table tbody tr:hover { background: #F0F2EE; }
+
+/* Print styles — invoices & receipts */
+@media print {
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  @page { size: A4; margin: 14mm; }
+  html, body, #root { height: auto; background: #fff !important; }
+  body { font-size: 12px; }
+  ::-webkit-scrollbar { display: none; }
+  a[href]::after { content: none !important; }
+}
